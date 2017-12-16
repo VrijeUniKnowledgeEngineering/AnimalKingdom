@@ -1,0 +1,164 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="content">
+                <h2>Search on the Animal Kingdom</h2>
+                <hr>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-lg-2">
+        </div>
+        <div class="col-lg-8">
+            <div class="searchBar">
+                <form action="/index/submit" method="post">
+                    <input class="form-control mr-sm-2" id="inputSearch" type="search" placeholder="Input your animal name..." aria-label="Search" name="id">
+                    <button class="btn btn-outline-success my-2 my-sm-0 searchButton" id="searchButton" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                </form>
+                <!--<input class="form-control mr-sm-2" id="inputSearch" type="search" placeholder="Search..." aria-label="Search">-->
+                <!--<button class="btn btn-outline-success my-2 my-sm-0 searchButton" id="searchButton" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>-->
+            </div>
+        </div>
+        <div class="col-lg-2">
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-2">
+        </div>
+        <div class="col-lg-8">
+            <div class="thumbnail" id="thumbnail">
+                <img id="animalImage" src="">
+            </div>
+        </div>
+        <div class="col-lg-2">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-2 col-sm-6">
+            <div class="textField" id="textBox">
+                <p class="textProperty">NAME</p>
+            </div>
+        </div>
+        <div class="col-lg-8 col-sm-6">
+            <div class="textField" id="textBox">
+                <p class="textValue" id="nameAnimal">{{ nameAnimal }}</p>
+            </div>
+        </div>
+        <div class="col-lg-2">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-2 col-sm-6">
+            <div class="textField" id="textBox">
+                <p class="textProperty">ABSTRACT</p>
+            </div>
+        </div>
+        <div class="col-lg-8 col-sm-6">
+            <div class="textField" id="textBox">
+                <p class="textValue" id="abstractText"> {{ abstractAnimal }} </p>
+            </div>
+        </div>
+        <div class="col-lg-2">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2 col-sm-6">
+            <div class="textField" id="textBox">
+                <p class="textProperty">KINGDOM</p>
+            </div>
+        </div>
+        <div class="col-lg-8 col-sm-6">
+            <div class="textField" id="textBox">
+                <p class="objectPropertyValue" id="animalKingdom"></p>
+            </div>
+        </div>
+        <div class="col-lg-2">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2 col-sm-6">
+            <div class="textField" id="textBox">
+                <p class="textProperty">PHYLUM</p>
+            </div>
+        </div>
+        <div class="col-lg-8 col-sm-6">
+            <div class="textField" id="textBox">
+                <p class="objectPropertyValue" id="animalPhylum"> {{userSearch}}</p>
+            </div>
+        </div>
+        <div class="col-lg-2">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2 col-sm-6">
+            <div class="textField" id="textBox">
+                <p class="textProperty">CLASS</p>
+            </div>
+        </div>
+        <div class="col-lg-8 col-sm-6">
+            <div class="textField" id="textBox">
+                <p class="objectPropertyValue" id="animalClass"></p>
+            </div>
+        </div>
+        <div class="col-lg-2">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2 col-sm-6">
+            <div class="textField" id="textBox">
+                <p class="textProperty">ORDER</p>
+            </div>
+        </div>
+        <div class="col-lg-8 col-sm-6">
+            <div class="textField" id="textBox">
+                <p class="objectPropertyValue" id="animalOrder"></p>
+            </div>
+        </div>
+        <div class="col-lg-2">
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-2 col-sm-6">
+            <div class="textField" id="textBox">
+                <p class="textProperty">FAMILY</p>
+            </div>
+        </div>
+        <div class="col-lg-8 col-sm-6">
+            <div class="textField" id="textBox">
+                <p class="objectPropertyValue" id="animalFamily"></p>
+            </div>
+        </div>
+        <div class="col-lg-2">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2 col-sm-6">
+            <div class="textField" id="textBox">
+                <p class="textProperty">EATS</p>
+            </div>
+        </div>
+        <div class="col-lg-8 col-sm-6">
+            <div class="textField" id="textBox">
+                <p class="objectPropertyValue" id="typeOfFood"></p>
+            </div>
+        </div>
+        <div class="col-lg-2">
+        </div>
+    </div>
+
+</div>
+
