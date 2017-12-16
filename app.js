@@ -7,8 +7,6 @@ var bodyParser = require('body-parser');
 
 var hbs = require('express-handlebars');// Finn
 
-
-
 var index = require('./routes/index');
 var users = require('./routes/users');
 

@@ -1,6 +1,14 @@
 var express = require('express');
 var router = express.Router();
 
+var fs = require('fs');
+// var rdf = require('rdf')
+// var rdfstore = require('rdfstore')
+
+var filename = './AnimalKingdom_AnimalsCountries.ttl';
+
+var path = require('path');
+var rdf = require('rdflib');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -24,14 +32,37 @@ var	searchQueryUser = false;
 var userSearch = "";
 
 
+router.get('/index/:id', function(req, res, next) {
+    console.log('wtf');
+    nameAnimal = 'fuck';
+    abstractAnimal = 'fdsafds';
+
+
+    try {
+        var rdfData = fs.readFileSync(filename).toString();
+        var store = rdf.graph();
+        var contentType='text/turtle';
+        var baseUrl="http://www.w3.org/2002/07/owl#Thing";
+        rdf.parse(rdfData,store,baseUrl,contentType);
+        var stms = store.statementsMatching(undefined, undefined , undefined);
+        for (var i=0; i<10;i++) {
+            var stm = stms[i]
+            console.log(stm) // the WebID of a friend
+
+        }
+
+    } catch (err) {
+        console.log("ERROR: " + err.message)
+    }
+
+    res.render('index', {nameAnimal: nameAnimal, abstractAnimal : abstractAnimal});
+});
 
 
 router.post('/index/submit', function (req, res, next) {
     var id = req.body.id;
     console.log("the animal is: " + id);
-    nameAnimal = 'Robert White';
-    abstractAnimal = 'I am an abstract';
-    res.render('index', {nameAnimal: nameAnimal, abstractAnimal : abstractAnimal, animalKingdom: animalKingdom});
+    res.redirect('/index/' + id);
 });
 
 
