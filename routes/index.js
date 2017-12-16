@@ -32,13 +32,73 @@ var	searchQueryUser = false;
 var userSearch = "";
 
 
-router.get('/index/:id', function(req, res, next) {
-    console.log('wtf');
+// router.get('/index/:id', function(req, res, next) {
+//
+//
+//
+//     try {
+//
+//         console.log('wtf');
+//         nameAnimal = 'fuck';
+//
+//         console.log(req.body.id + "id = ");
+//
+//         abstractAnimal = 'fdsafds';
+//
+//         var rdfData = fs.readFileSync(filename).toString();
+//         var store = rdf.graph();
+//         var contentType='text/turtle';
+//         var baseUrl="http://www.w3.org/2002/07/owl#Thing";
+//         // var body = '<a> <b> <c> .';
+//         rdf.parse(rdfData,store,baseUrl,contentType);
+//         var country = rdf.sym("http://www.semanticweb.org/dre/ontologies/2017/9/untitled-ontology-41/Country");
+//         var animal = rdf.sym("http://127.0.0.1:3333/African_Elephant");
+//
+//         // var cou = store.any(animal, undefined, undefined);
+//         // console.log('========', cou.uri)
+//
+//
+//         var stms = store.statementsMatching(animal, undefined , undefined);
+//         for (var i=0; i<stms.length;i++) {
+//             console.log("\n");
+//             var stm = stms[i];
+//             var subject = stm.subject.uri;
+//             var predicate = stm.predicate.uri;
+//             var object = stm.object.uri;
+//             console.log("subject: "+ subject);
+//             console.log("predicate: "+ predicate);
+//             console.log("object: "+ object);
+//             abstractAnimal = object;
+//             console.log(stm) // the WebID of a friend
+//
+//         }
+//
+//     } catch (err) {
+//         console.log("ERROR: " + err.message)
+//     }
+//
+//     res.render('index', {nameAnimal: nameAnimal, abstractAnimal : abstractAnimal});
+// });
+
+
+router.post('/index/submit', function (req, res, next) {
+    var id = req.body.id;
+    console.log("the animal is: " + id);
+    // res.redirect('/index/' + id);
     nameAnimal = 'fuck';
     abstractAnimal = 'fdsafds';
 
 
+
     try {
+
+        console.log('wtf');
+        nameAnimal = 'fuck';
+
+        console.log(req.body.id + "id = ");
+
+        abstractAnimal = 'fdsafds';
+
         var rdfData = fs.readFileSync(filename).toString();
         var store = rdf.graph();
         var contentType='text/turtle';
@@ -46,32 +106,33 @@ router.get('/index/:id', function(req, res, next) {
         // var body = '<a> <b> <c> .';
         rdf.parse(rdfData,store,baseUrl,contentType);
         var country = rdf.sym("http://www.semanticweb.org/dre/ontologies/2017/9/untitled-ontology-41/Country");
+        var animal = rdf.sym("http://127.0.0.1:3333/" + req.body.id); //African_Elephant
+
+        // var cou = store.any(animal, undefined, undefined);
+        // console.log('========', cou.uri)
 
 
-        var cou = store.any(undefined, undefined, country);
-        console.log('========', cou.uri)
+        var stms = store.statementsMatching(animal, undefined , undefined);
+        for (var i=0; i<stms.length;i++) {
+            console.log("\n");
+            var stm = stms[i];
+            var subject = stm.subject.uri;
+            var predicate = stm.predicate.uri;
+            var object = stm.object.uri;
+            console.log("subject: "+ subject);
+            console.log("predicate: "+ predicate);
+            console.log("object: "+ object);
+            nameAnimal = subject;
+            abstractAnimal = object;
+            console.log(stm) // the WebID of a friend
 
-        //
-        // var stms = store.statementsMatching(undefined, undefined , undefined);
-        // for (var i=0; i<2;i++) {
-        //     var stm = stms[i]
-        //     console.log('first entry: ' + stm.$1)
-        //     console.log(stm) // the WebID of a friend
-        //
-        // }
+        }
 
     } catch (err) {
         console.log("ERROR: " + err.message)
     }
-
+    
     res.render('index', {nameAnimal: nameAnimal, abstractAnimal : abstractAnimal});
-});
-
-
-router.post('/index/submit', function (req, res, next) {
-    var id = req.body.id;
-    console.log("the animal is: " + id);
-    res.redirect('/index/' + id);
 });
 
 
