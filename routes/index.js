@@ -43,13 +43,22 @@ router.get('/index/:id', function(req, res, next) {
         var store = rdf.graph();
         var contentType='text/turtle';
         var baseUrl="http://www.w3.org/2002/07/owl#Thing";
+        // var body = '<a> <b> <c> .';
         rdf.parse(rdfData,store,baseUrl,contentType);
-        var stms = store.statementsMatching(undefined, undefined , undefined);
-        for (var i=0; i<10;i++) {
-            var stm = stms[i]
-            console.log(stm) // the WebID of a friend
+        var country = rdf.sym("http://www.semanticweb.org/dre/ontologies/2017/9/untitled-ontology-41/Country");
 
-        }
+
+        var cou = store.any(undefined, undefined, country);
+        console.log('========', cou.uri)
+
+        //
+        // var stms = store.statementsMatching(undefined, undefined , undefined);
+        // for (var i=0; i<2;i++) {
+        //     var stm = stms[i]
+        //     console.log('first entry: ' + stm.$1)
+        //     console.log(stm) // the WebID of a friend
+        //
+        // }
 
     } catch (err) {
         console.log("ERROR: " + err.message)
